@@ -1,5 +1,6 @@
 import tornado.ioloop
 import tornado.web
+import os
 
 
 #handles response when URL is visited
@@ -18,6 +19,7 @@ def make_app():
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(8888)
+    PORT = int(os.environ.get('PORT', '8888'))
+    app.listen(PORT)
     #event loop
     tornado.ioloop.IOLoop.current().start()
