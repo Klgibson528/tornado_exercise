@@ -1,6 +1,5 @@
 import tornado.ioloop
 import tornado.web
-import os
 
 
 #handles response when URL is visited
@@ -21,17 +20,17 @@ class page3Handler(tornado.web.RequestHandler):
 
 
 def make_app():
-    return tornado.web.Application([
-        #home page
-        (r"/", MainHandler),
-        (r"/page2", page2Handler),
-        (r"/page3", page3Handler),
-    ])
+    return tornado.web.Application(
+        [
+            #home page
+            (r"/", MainHandler),
+            (r"/page2", page2Handler),
+            (r"/page3", page3Handler),
+        ],
+        autoreload=True)
 
 
 if __name__ == "__main__":
     app = make_app()
-    PORT = int(os.environ.get('PORT', '8888'))
-    app.listen(PORT)
-    #event loop
+    app.listen(8888)
     tornado.ioloop.IOLoop.current().start()
