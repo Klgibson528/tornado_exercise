@@ -10,10 +10,22 @@ class MainHandler(tornado.web.RequestHandler):
         self.write("Hello, Katy")
 
 
+class page2Handler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello, Chris")
+
+
+class page3Handler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello, William")
+
+
 def make_app():
     return tornado.web.Application([
         #home page
         (r"/", MainHandler),
+        (r"/page2", page2Handler),
+        (r"/page3", page3Handler),
     ])
 
 
