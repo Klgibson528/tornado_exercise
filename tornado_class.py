@@ -1,6 +1,6 @@
 import tornado.ioloop
 import tornado.web
-
+import tornado.log
 import os
 
 
@@ -8,6 +8,7 @@ import os
 #is class and inherits from request handler
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
+        self.set_header("Content-Type", 'text/plain')
         self.write("Hello, Katy")
 
 
@@ -33,6 +34,7 @@ def make_app():
 
 
 if __name__ == "__main__":
+    tornado.log.enable_pretty_logging()
     app = make_app()
     PORT = int(os.environ.get('PORT', '8888'))
     app.listen(PORT)

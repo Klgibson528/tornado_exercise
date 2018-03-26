@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+{% block head %}
+
+<head>
+
+    <title>
+        {% block title %} Hello {{ name }} {% endblock %}
+    </title>
+
+    {% endblock %}
+
+    <body>
+        {% block navbar %}
+        <h1>Hello {{ name|capitalize }}</h1>
+        {% endblock %}
+        <!--will fill in templete below -->
+        {% block content %}{% endblock %} {% block footer %}
+        <footer>
+            <img style="width: 200px" src="/static/img/me.jpg" alt="William and I" </footer> {% endblock %}
+    </body>
+
+</html>
