@@ -2,10 +2,14 @@ footer {
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 40%;
+  height: 10%;
   width: 100%;
-  background-color: red;
-  color: white;
+  background-color: #f8f9fa;
+  color: black;
+  text-align: center;
+}
+h5 {
+  text-align: center;
 }
 body {
   background-color: rgb(224, 240, 11);

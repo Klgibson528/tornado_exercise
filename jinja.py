@@ -29,7 +29,11 @@ class Page2Handler(TemplateHandler):
     def get(self):
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
+        self.render_template("page2.html", {})
 
+    def post(self):
+        self.set_header('Cache-Control',
+                        'no-store, no-cache, must-revalidate, max-age=0')
         self.render_template("page2.html", {})
 
 
