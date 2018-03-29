@@ -1,0 +1,15 @@
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 40%;
+  width: 100%;
+  background-color: red;
+  color: white;
+}
+body {
+  background-color: rgb(224, 240, 11);
+}
+.footer {
+  width: 33%;
+}

@@ -7,17 +7,61 @@
     <title>
         {% block title %} Hello {{ name }} {% endblock %}
     </title>
+    <link rel="stylesheet" href="/static/css/jinja.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" medi="screen" href="bootstrap.css" />
+</head>
+{% endblock %}
 
+<body>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">Our Company</a>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active border-right">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item border-right">
+                    <a class="nav-link" href="#">Products</a>
+                </li>
+                <li class="nav-item border-right">
+                    <a class="nav-link" href="#">Company</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     {% endblock %}
+    <!--will fill in templete below -->
+    {% block content %}
+    <img style="width: 200px" src="/static/img/me.jpg" alt="William and I">{% endblock %} {% block footer %}
+    <footer style="padding: 1em">
+        <form action="/action_page.php">
+            <div class="form-group footer">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <br>
+            <div class="form-group footer">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
 
-    <body>
-        {% block navbar %}
-        <h1>Hello {{ name|capitalize }}</h1>
-        {% endblock %}
-        <!--will fill in templete below -->
-        {% block content %}{% endblock %} {% block footer %}
-        <footer>
-            <img style="width: 200px" src="/static/img/me.jpg" alt="William and I" </footer> {% endblock %}
-    </body>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </footer> {% endblock %}
+</body>
 
 </html>

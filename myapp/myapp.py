@@ -5,7 +5,7 @@ import os
 from jinja2 import \
   Environment, PackageLoader, select_autoescape
 ENV = Environment(
-    loader=PackageLoader('jinja-app', 'templates'),
+    loader=PackageLoader('myapp', 'templates'),
     autoescape=select_autoescape(['html', 'xml']))
 
 
@@ -19,8 +19,12 @@ class MainHandler(TemplateHandler):
     def get(self):
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
-
-        context = {}
+        name = self.get_query_argument('name', 'Nobody')
+        context = {
+            'name': name,
+            'users': ['Katy', 'Chris'],
+            'amount': 42.343234
+        }
 
         self.render_template("hello.html", context)
 

@@ -1,9 +1,1 @@
-{% extends "base.html" %} {% block navbar %} {{ super() }} New Navbar {% endblock %} {% block content %}
-<h2>Tip: {{ amount|round }}</h2>
-<h1>Members</h1>
-<ul>
-    {% for user in users %}
-    <li>{{ user}}</li>
-    {% endfor %}
-</ul>
-{% endblock %}
+{% extends "base.html" %} {% block content %} Is this working? {% endblock %}
