@@ -2,11 +2,40 @@ import tornado.ioloop
 import tornado.web
 import tornado.log
 import os
+import boto3
+
+client = boto3.client(
+    'ses',
+    region_name='us-east-1',
+    aws_access_key_id=os.environ.get('AWS_KEY'),
+    aws_secret_access_key=os.environ.get('AWS_SECRET'))
+
 from jinja2 import \
   Environment, PackageLoader, select_autoescape
 ENV = Environment(
     loader=PackageLoader('jinja-app', 'templates'),
     autoescape=select_autoescape(['html', 'xml']))
+
+
+def send_email(title, message):
+    response = client.send_email(
+        Destination={
+            'ToAddresses': ['klgibson528@gmail.com'],
+        },
+        Message={
+            'Body': {
+                'Text': {
+                    'Charset': 'UTF-8',
+                    'Data': message,
+                },
+            },
+            'Subject': {
+                'Charset': 'UTF-8',
+                'Data': title
+            },
+        },
+        Source='klgibson528@gmail.com',
+    )
 
 
 class TemplateHandler(tornado.web.RequestHandler):
@@ -32,6 +61,10 @@ class Page2Handler(TemplateHandler):
         self.render_template("page2.html", {})
 
     def post(self):
+        email = self.get_body_argument('email')
+        comment = self.get_body_argument('comments')
+        message = email + '\n' + comment
+        send_email('New Contact', message)
         self.set_header('Cache-Control',
                         'no-store, no-cache, must-revalidate, max-age=0')
         self.render_template("page2.html", {})
